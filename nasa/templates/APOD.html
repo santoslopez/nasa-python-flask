@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Astronomy Picture of the Day{% endblock %}
+{% block body %}
+   
+    {% if errorAPI %}
+        <h2> {{ errorAPI }}</h2>
+    {% else %}
+        <h2>Astronomy Picture of the Day</h2>
+        <a href="/">Inicio</a>
+        <p>Date: {{ date }}</p>
+        <img src="{{ urlAPOD }}">
+        <h3> {{ titleImage }}</h3>
+        <p>Image & credit: {{ copyright }}</>
+        <p>{{ explanation }}</>
+    {% endif %}
+
+
+{% endblock %}

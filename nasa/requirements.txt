@@ -1,0 +1,6 @@
+pip install requests
+
+
+Manejo de errores:
+keyErrors
+Consumir api 
