@@ -1,6 +1,7 @@
 import requests as request;
 
 from flask import Flask,jsonify,Request,Response,render_template;
+from config import API_KEY;
 
 # Darle un nombre a la variable y que se llamara en el main
 app = Flask(__name__)
@@ -12,7 +13,7 @@ def index():
 @app.route('/apod')
 def apod():
     url = 'https://api.nasa.gov/planetary/apod';
-    parametros = {'api_key':'jW2fwtlHdLabxdxlOxd1fHedTF8DNGADhWumWqlu'}
+    parametros = {'api_key':API_KEY}
     response = request.get(url, params=parametros)
     
     try:
