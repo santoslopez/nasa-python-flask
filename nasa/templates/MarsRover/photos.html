@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Mars Rover Photos {% endblock %}
+{% block body %}
+<style>
+    .card-img-top {
+        object-fit: cover;
+        height: 200px;
+    }
+</style>
+Fotos de Marte Rover
+  {% if errorAPI %}
+        <h2> {{ errorAPI }}</h2>
+    {% else %}
+        {% if imagenes %}
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Filtrar por nombre de camara:</option>
+                {{ nombreCamaras }}
+                {% for imagen in nombreCamaras %}
+                    <option value="1">{{ nombreCamaras }}</option>
+                {% endfor %}
+               
+            </select>
+            
+            <div class="row row-cols-1 row-cols-md-4">
+            {% for imagen in imagenes %}
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="{{ imagen['img_src'] }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ imagen['titulo'] }}</h5>
+                            <p class="card-text">{{ imagen['fecha'] }}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>No se encontraron imágenes.</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

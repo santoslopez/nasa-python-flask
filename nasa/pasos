@@ -2,3 +2,10 @@ mkdir myproject
 cd myproject
 python3 -m venv .venv
 source .venv/bin/activate
+
+Manejo de errores:
+keyErrors
+Consumir api 
+
+
+git rm --cached config.py
