@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Mars Rover Photos {% endblock %}
+{% block body %}
+<style>
+    .card-img-top {
+        object-fit: cover;
+        height: 200px;
+    }
+</style>
+Fotos de Marte Rover
+  <!--{% if errorAPI %}
+        <h2> {{ errorAPI }}</h2>
+    {% else %}
+        <h2>Filtrar por nombre de camara</h2>
+        select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="valorCamara" name="valorCamara">
+            {{ nombreCamaras }}
+            {% for inicial,imagen in nombreCamaras.items() %}
+                {% set contador = loop.index %}
+                <option value="{{ inicial }}" id="{{ contador }}" name="{{ contador }}">{{ imagen }}</option>
+            {% endfor %}
+        </select-->
+        <!--a class="btn btn-primary" href="#" role="button" id="btnFiltrarImagenes" name="btnFiltrarImagenes">Buscar</a>    
+        {% if imagenes %}
+            
+            <h2>Resultados</h2>
+            <div class="row row-cols-1 row-cols-md-4" id="resultados" name="resultados">
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-4" id="cargarResultadosImagenes" name="cargarResultadosImagenes">
+            {% for imagen in imagenes %}
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="{{ imagen['img_src'] }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ imagen['titulo'] }}</h5>
+                            <p class="card-text">{{ imagen['fecha'] }}</p>
+                          
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>No se encontraron imágenes.</p>
+        {% endif %}
+    {% endif %}-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ url_for('static', filename='js/filtrarImagenes.js') }}"></script>
+{% endblock %}

@@ -7,7 +7,7 @@ def apod():
     url = 'https://api.nasa.gov/planetary/apod';
     # obtener fecha actual de mi servidor, NO de la NASA
     fechaActual = datetime.now().strftime('%Y-%m-%d')
-    parametros = {'api_key':API_KEY,'date':fechaActual}
+    parametros = {'api_key':API_KEY}
     response = request.get(url, params=parametros)
     
     try:
@@ -16,8 +16,8 @@ def apod():
             urlAPOD = datos['url']        
             explanation = datos['explanation']
             titleImage = datos['title']   
-            copyright = datos['copyright']        
-            return render_template('apod.html',explanation=explanation,titleImage=titleImage,urlAPOD=urlAPOD,copyright=copyright,date=fechaActual)   
+            #copyright = datos['copyright']        
+            return render_template('apod.html',explanation=explanation,titleImage=titleImage,urlAPOD=urlAPOD,copyright="No disponible",date=fechaActual)   
         else:
             return render_template('apod.html',errorAPI="Error en la API")
         # en caso que se coloque un dato que no existe en la API mostrarlo
