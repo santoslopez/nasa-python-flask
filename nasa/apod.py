@@ -8,7 +8,7 @@ def apod():
     # obtener fecha actual de mi servidor, NO de la NASA
     fechaActual = datetime.now().strftime('%Y-%m-%d')
     parametros = {'api_key':API_KEY}
-    response = request.get(url, params=parametros)
+    response = request.get(url,params=parametros)
     
     try:
         if response.status_code == 200:
@@ -17,9 +17,9 @@ def apod():
             explanation = datos['explanation']
             titleImage = datos['title']   
             #copyright = datos['copyright']        
-            return render_template('apod.html',explanation=explanation,titleImage=titleImage,urlAPOD=urlAPOD,copyright="No disponible",date=fechaActual)   
+            return render_template('APOD.html',explanation=explanation,titleImage=titleImage,urlAPOD=urlAPOD,copyright="No disponible",date=fechaActual)   
         else:
-            return render_template('apod.html',errorAPI="Error en la API")
+            return render_template('APOD.html',errorAPI="Error en la API")
         # en caso que se coloque un dato que no existe en la API mostrarlo
     except KeyError as e:
         mensaje_error = f"La clave '{e.args[0]}' no existe en el diccionario."

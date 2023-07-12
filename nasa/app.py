@@ -4,6 +4,7 @@ from flask import Flask,jsonify,request,Response,render_template;
 from apod import apod;
 from exploracionPlanetaria import exploracionPlanetaria;
 from marsRoversPhotos import photos;
+from galeriaMultimedia import buscarGaleriaMultimedia;
 
 # Darle un nombre a la variable y que se llamara en el main
 app = Flask(__name__)
@@ -20,15 +21,18 @@ diccionarioRoverCamaras =  {
     "MINITES":"Miniature Thermal Emission Spectrometer (Mini-TES)"	
 }
 
-# Para mandar a llamar a los archivos index
+# Para mandar a llamar al el archivo de inicio
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Manda a llamar la página de apod: que muestra la imagen del día
 @app.route('/apod')
 def apod_route():
+    # apod() es la función que se encuentra en el archivo apod.py
     return apod()
 
+# Se utiliza en filtrarImagenes.js
 @app.route('/llamar_apod/<string:parametro>',methods=['POST'])
 def llamar_apod(parametro):
     resultado = photos(parametro)
@@ -41,6 +45,26 @@ def explP_route():
 @app.route('/MarsRover')
 def MarsRover_route():
     return render_template('MarsRover/photos.html',diccionarioRoverCamaras=diccionarioRoverCamaras)
+
+@app.route('/galeriaMultimedia')
+def galeryMultimedia_route():
+    return render_template('galeriaMultimedia/galeriaMultimedia.html')
+
+@app.route('/galeriaMultimedia2/<string:parametro>',methods=['POST'])
+def galeryMultimedia_route2(parametro):
+    return buscarGaleriaMultimedia(parametro)
+
+@app.route('/galeriaMultimedia_params/<string:parametro>',methods=['POST'])
+def llamar_galeriaMultimedia_route(parametro):
+    filtro = buscarGaleriaMultimedia(parametro)
+    return filtro
+
+''' 
+    Manejo de errores
+'''
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('error/404.html',error=error)
 
 if __name__ == '__main__':
     app.run(debug=True)

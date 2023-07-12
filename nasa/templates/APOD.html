@@ -5,14 +5,17 @@
     {% if errorAPI %}
         <h2> {{ errorAPI }}</h2>
     {% else %}
-        <h2>Astronomy Picture of the Day</h2>
-        <a href="/">Inicio</a>
+      <h2>Astronomy Picture of the Day</h2>
+       
+        <a class="btn btn-primary" href="/">Inicio</a>
         <p>Date: {{ date }}</p>
-        <img src="{{ urlAPOD }}">
-        <h3> {{ titleImage }}</h3>
-        <p>Image & credit: {{ copyright }}</>
-        <p>{{ explanation }}</>
+     <div class="row row-cols-1 row-cols-md-3" >
+        <img src="{{ urlAPOD }}" class="img-thumbnail">
+     </div>
+     <h3> {{ titleImage }}</h3>
+     <p>Image & credit: {{ copyright }}</>
+     <p>{{ explanation }}</>
+    
     {% endif %}
-
 
 {% endblock %}
