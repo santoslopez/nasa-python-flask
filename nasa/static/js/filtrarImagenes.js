@@ -12,7 +12,7 @@ document.getElementById("btnBuscarResultado").addEventListener("click",function(
                 var contenido="";
                 for (var index = 0; index < response.photos.length; index++) {
                     var imgsrc = response.photos[index].img_src;
-                    contenido += "<div class='col mb-4' ><img src='"+imgsrc+"' class='img-fluid'></div>";
+                    contenido += "<div class='col mb-4'><img src='"+imgsrc+"' class='img-fluid'></div>";
                 } 
                 document.getElementById("divFiltrarBusquedaFotosRover").innerHTML = contenido;
             }else{

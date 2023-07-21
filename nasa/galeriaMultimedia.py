@@ -3,19 +3,10 @@ from flask import render_template,jsonify;
 from config import API_KEY;
 from datetime import datetime;
 
-def buscarGaleriaMultimedia(parametro):
+def buscarGaleriaMultimedia(inputBusqueda,tipoBusqueda):
     url ="https://images-api.nasa.gov/search"
-
     fechaActual = datetime.now().strftime('%Y')
-    parametros  = "";
-    tipoBusqueda = "";
-    if tipoBusqueda=='ambos':
-        #parametros = {'q':'apollo','media_type':'image','year_start':1920,'year_end':fechaActual}
-        parametros = {'q':parametro,'media_type':'image,video','year_start':1920,'year_end':fechaActual}
-    elif tipoBusqueda=='imagenes':
-        parametros = {'q':parametro,'media_type':'image','year_start':1920,'year_end':fechaActual}
-    else:
-        parametros = {'q':parametro,'media_type':'image','year_start':1920,'year_end':fechaActual}
+    parametros = {'q':inputBusqueda,'media_type':tipoBusqueda,'year_start':1920,'year_end':fechaActual}
         
     response = request.get(url,params=parametros)
     #try:

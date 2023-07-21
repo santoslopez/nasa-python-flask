@@ -47,17 +47,12 @@ def MarsRover_route():
     return render_template('MarsRover/photos.html',diccionarioRoverCamaras=diccionarioRoverCamaras)
 
 @app.route('/galeriaMultimedia')
-def galeryMultimedia_route():
+def galeryMultimedia():
     return render_template('galeriaMultimedia/galeriaMultimedia.html')
 
-@app.route('/galeriaMultimedia2/<string:parametro>',methods=['POST'])
-def galeryMultimedia_route2(parametro):
-    return buscarGaleriaMultimedia(parametro)
-
-@app.route('/galeriaMultimedia_params/<string:parametro>',methods=['POST'])
-def llamar_galeriaMultimedia_route(parametro):
-    filtro = buscarGaleriaMultimedia(parametro)
-    return filtro
+@app.route('/galeriaMultimediaFiltrarBusqueda/<string:parametro1>/<string:parametro2>',methods=['POST'])
+def galeryMultimedia_route(parametro1,parametro2):
+    return buscarGaleriaMultimedia(parametro1,parametro2)
 
 ''' 
     Manejo de errores
