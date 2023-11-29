@@ -1,2 +1,18 @@
-**/__pycache__/
-config.py
+# Ignorar archivos generados por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar el entorno virtual
+venv/
+.venv/
+
+# Ignorar archivos de configuración local
+instance/
+.env
+.DS_Store
+# Ignorar archivos de registro y caché
+logs/
+*.log
+*.cache
