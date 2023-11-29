@@ -1,14 +1,14 @@
 {
     "builds": [
       {
-        "src": "nasa/index.py",
+        "src": "nasa/app.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "nasa/index.py"
+        "dest": "nasa/app.py"
       }
     ]
   }
